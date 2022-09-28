@@ -1,0 +1,43 @@
+---
+- hosts: Web
+  remote_user: root
+  vars: 
+    http_port: 80
+    max_clients: 200
+
+  tasks:
+
+# - debug:
+#     msg: System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}
+#
+# - name: Display all variables/facts known for a host
+#   debug:
+#     var: hostvars[inventory_hostname]["ansible_default_ipv4"]["gateway"]
+#
+# - name: Display all variables/facts known for a host
+#   debug:
+#     var: ansible_default_ipv4.gateway
+#
+# - shell: /usr/bin/uptime
+#   register: Result
+#
+# - debug:
+#     var: Result
+#
+# - copy:
+#     src: /Windows/Desktop/YAML
+#     dest: /home/laurence/
+#     owner: laurence
+#     group: laurence
+#     mode: 755
+#
+# - copy:
+#     src: /etc/sudoers
+#     dest: /home/laurence/
+#     backup: yes
+#
+  - copy:
+      src: /etc/sudoers
+      dest: /home/laurence/
+      validate: visudo -cf %s
+...
