@@ -1,0 +1,16 @@
+---
+- hosts: Web
+  remote_user: root
+  vars:
+    http_port: 80
+    max_clients: 200
+  tasks:
+  - name: Ensure apache is at the latest version
+    yum: pkg=httpd state=latest
+
+  - name: Write the configuration file
+    template: src=/home/laurence/YAML/practise.yml dest=/home/laurence/practise.yml
+
+  - name: Ensure apache is running
+    service: name=httpd state=started
+...

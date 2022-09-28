@@ -1,0 +1,11 @@
+---
+- hosts: Web
+  remote_user: root
+  vars: 
+    http_port: 80
+    max_clients: 200
+  tasks: 
+  - name: Practise Debug Module. 
+    debug:
+      msg: "System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}"
+...
